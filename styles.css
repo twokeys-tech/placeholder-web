@@ -1,0 +1,144 @@
+@font-face {
+  font-family: "Boris Black Bloxx";
+  src: url("BorisBlackBloxx.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #050609;
+  --fg: #f3f7fb;
+  --muted: #89919f;
+  --line: rgba(255, 255, 255, 0.13);
+  --cyan: #57d8ff;
+  --lime: #b9ff66;
+  --hot: #ff4f87;
+  --panel: rgba(9, 13, 19, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(87, 216, 255, 0.2), transparent 28rem),
+    radial-gradient(circle at 86% 78%, rgba(255, 79, 135, 0.16), transparent 32rem),
+    radial-gradient(circle at 52% 50%, rgba(185, 255, 102, 0.08), transparent 22rem),
+    linear-gradient(135deg, #050609 0%, #0a0d12 42%, #050609 100%);
+  color: var(--fg);
+  font-family:
+    ui-monospace,
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  cursor: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body::selection {
+  background: transparent;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.94), transparent 88%);
+}
+
+.network {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  filter: saturate(1.25);
+}
+
+.cursor-square {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(185, 255, 102, 0.45);
+  background: rgba(87, 216, 255, 0.16);
+  opacity: 0.5;
+  pointer-events: none;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 140ms ease;
+}
+
+.frontpage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: clamp(1rem, 2.8vw, 2.5rem);
+}
+
+h1 {
+  width: 100%;
+  margin: 0;
+  font-family: "Boris Black Bloxx", Impact, fantasy;
+  font-size: clamp(4.2rem, 18vw, 18.5rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  text-wrap: balance;
+  text-align: center;
+  color: rgba(33, 41, 52, 0.78);
+  text-shadow:
+    0 0 1px rgba(185, 255, 102, 0.12),
+    0 0 36px rgba(87, 216, 255, 0.16),
+    0 18px 80px rgba(0, 0, 0, 0.72);
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 760px) {
+  body {
+    cursor: auto;
+  }
+
+  .cursor-square {
+    display: none;
+  }
+
+  .frontpage {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(3.5rem, 22vw, 7.8rem);
+    line-height: 0.9;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .network {
+    display: none;
+  }
+}
